@@ -4,18 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CRM17Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Emploes">
+      <Schema Namespace="Хранилище CRM15Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emploe">
           <Key>
-            <PropertyRef Name="IDEmployee" />
+            <PropertyRef Name="IDEmploys" />
           </Key>
-          <Property Name="IDEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEmploys" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IDRole" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Rols">
           <Key>
@@ -24,43 +24,43 @@
           <Property Name="IDRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Emploes_Rols">
+        <Association Name="FK_Emploe_Emploe">
           <End Role="Rols" Type="Self.Rols" Multiplicity="1" />
-          <End Role="Emploes" Type="Self.Emploes" Multiplicity="*" />
+          <End Role="Emploe" Type="Self.Emploe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rols">
               <PropertyRef Name="IDRole" />
             </Principal>
-            <Dependent Role="Emploes">
-              <PropertyRef Name="IDRole" />
+            <Dependent Role="Emploe">
+              <PropertyRef Name="IdRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище CRM17ModelContainer">
-          <EntitySet Name="Emploes" EntityType="Self.Emploes" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="Хранилище CRM15ModelContainer">
+          <EntitySet Name="Emploe" EntityType="Self.Emploe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rols" EntityType="Self.Rols" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Emploes_Rols" Association="Self.FK_Emploes_Rols">
+          <AssociationSet Name="FK_Emploe_Emploe" Association="Self.FK_Emploe_Emploe">
             <End Role="Rols" EntitySet="Rols" />
-            <End Role="Emploes" EntitySet="Emploes" />
+            <End Role="Emploe" EntitySet="Emploe" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CRM17Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Emploes">
+      <Schema Namespace="CRM15Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emploe">
           <Key>
-            <PropertyRef Name="IDEmployee" />
+            <PropertyRef Name="IDEmploys" />
           </Key>
-          <Property Name="IDEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEmploys" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDRole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Rols" Relationship="Self.FK_Emploes_Rols" FromRole="Emploes" ToRole="Rols" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rols" Relationship="Self.FK_Emploe_Emploe" FromRole="Emploe" ToRole="Rols" />
         </EntityType>
         <EntityType Name="Rols">
           <Key>
@@ -68,26 +68,26 @@
           </Key>
           <Property Name="IDRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Emploes" Relationship="Self.FK_Emploes_Rols" FromRole="Rols" ToRole="Emploes" />
+          <NavigationProperty Name="Emploe" Relationship="Self.FK_Emploe_Emploe" FromRole="Rols" ToRole="Emploe" />
         </EntityType>
-        <Association Name="FK_Emploes_Rols">
+        <Association Name="FK_Emploe_Emploe">
           <End Role="Rols" Type="Self.Rols" Multiplicity="1" />
-          <End Role="Emploes" Type="Self.Emploes" Multiplicity="*" />
+          <End Role="Emploe" Type="Self.Emploe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rols">
               <PropertyRef Name="IDRole" />
             </Principal>
-            <Dependent Role="Emploes">
-              <PropertyRef Name="IDRole" />
+            <Dependent Role="Emploe">
+              <PropertyRef Name="IdRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EP" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Emploes" EntityType="Self.Emploes" />
+        <EntityContainer Name="EP1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emploe" EntityType="Self.Emploe" />
           <EntitySet Name="Rols" EntityType="Self.Rols" />
-          <AssociationSet Name="FK_Emploes_Rols" Association="Self.FK_Emploes_Rols">
+          <AssociationSet Name="FK_Emploe_Emploe" Association="Self.FK_Emploe_Emploe">
             <End Role="Rols" EntitySet="Rols" />
-            <End Role="Emploes" EntitySet="Emploes" />
+            <End Role="Emploe" EntitySet="Emploe" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -95,22 +95,22 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище CRM17ModelContainer" CdmEntityContainer="EP">
-          <EntitySetMapping Name="Emploes">
-            <EntityTypeMapping TypeName="CRM17Model.Emploes">
-              <MappingFragment StoreEntitySet="Emploes">
-                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
+        <EntityContainerMapping StorageEntityContainer="Хранилище CRM15ModelContainer" CdmEntityContainer="EP1">
+          <EntitySetMapping Name="Emploe">
+            <EntityTypeMapping TypeName="CRM15Model.Emploe">
+              <MappingFragment StoreEntitySet="Emploe">
+                <ScalarProperty Name="IDEmploys" ColumnName="IDEmploys" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rols">
-            <EntityTypeMapping TypeName="CRM17Model.Rols">
+            <EntityTypeMapping TypeName="CRM15Model.Rols">
               <MappingFragment StoreEntitySet="Rols">
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

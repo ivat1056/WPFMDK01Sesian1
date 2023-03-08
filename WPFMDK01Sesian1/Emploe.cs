@@ -12,15 +12,15 @@ namespace WPFMDK01Sesian1
     using System;
     using System.Collections.Generic;
     
-    public partial class Emploes
+    public partial class Emploe
     {
-        public int IDEmployee { get; set; }
+        public int IDEmploys { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
         public string MiddleName { get; set; }
         public string Number { get; set; }
         public string Password { get; set; }
-        public int IDRole { get; set; }
+        public int IdRole { get; set; }
     
         public virtual Rols Rols { get; set; }
     }

@@ -64,16 +64,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="base.cs">
+    <Compile Include="Base.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>base.tt</DependentUpon>
+      <DependentUpon>Base.tt</DependentUpon>
     </Compile>
-    <Compile Include="Emploes.cs">
-      <DependentUpon>base.tt</DependentUpon>
+    <Compile Include="Emploe.cs">
+      <DependentUpon>Base.tt</DependentUpon>
     </Compile>
     <Compile Include="Rols.cs">
-      <DependentUpon>base.tt</DependentUpon>
+      <DependentUpon>Base.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,15 +83,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="base.Context.cs">
+    <Compile Include="Base.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>base.Context.tt</DependentUpon>
+      <DependentUpon>Base.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="base.Designer.cs">
+    <Compile Include="Base.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>base.edmx</DependentUpon>
+      <DependentUpon>Base.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -116,12 +116,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="base.edmx">
+    <EntityDeploy Include="Base.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>base.Designer.cs</LastGenOutput>
+      <LastGenOutput>Base.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="base.edmx.diagram">
-      <DependentUpon>base.edmx</DependentUpon>
+    <None Include="Base.edmx.diagram">
+      <DependentUpon>Base.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -134,15 +134,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="base.Context.tt">
+    <Content Include="Base.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>base.Context.cs</LastGenOutput>
-      <DependentUpon>base.edmx</DependentUpon>
+      <DependentUpon>Base.edmx</DependentUpon>
+      <LastGenOutput>Base.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="base.tt">
+    <Content Include="Base.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>base.edmx</DependentUpon>
-      <LastGenOutput>base.cs</LastGenOutput>
+      <DependentUpon>Base.edmx</DependentUpon>
+      <LastGenOutput>Base.cs</LastGenOutput>
     </Content>
     <Content Include="Resours\Rem.jpg" />
     <Resource Include="Resours\Лого ТНС.jpg" />

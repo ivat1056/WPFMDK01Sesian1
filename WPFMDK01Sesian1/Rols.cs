@@ -17,13 +17,13 @@ namespace WPFMDK01Sesian1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rols()
         {
-            this.Emploes = new HashSet<Emploes>();
+            this.Emploe = new HashSet<Emploe>();
         }
     
         public int IDRole { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Emploes> Emploes { get; set; }
+        public virtual ICollection<Emploe> Emploe { get; set; }
     }
 }

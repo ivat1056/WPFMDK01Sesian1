@@ -13,10 +13,10 @@ namespace WPFMDK01Sesian1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EP : DbContext
+    public partial class EP1 : DbContext
     {
-        public EP()
-            : base("name=EP")
+        public EP1()
+            : base("name=EP1")
         {
         }
     
@@ -25,7 +25,7 @@ namespace WPFMDK01Sesian1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Emploes> Emploes { get; set; }
+        public virtual DbSet<Emploe> Emploe { get; set; }
         public virtual DbSet<Rols> Rols { get; set; }
     }
 }
