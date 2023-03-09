@@ -145,7 +145,7 @@
       <DependentUpon>Base.edmx</DependentUpon>
       <LastGenOutput>Base.cs</LastGenOutput>
     </Content>
-    <Content Include="Resours\Rem.jpg" />
+    <Resource Include="Resours\Rem.jpg" />
     <Resource Include="Resours\Лого ТНС.jpg" />
     <Resource Include="Resours\image.ico" />
   </ItemGroup>

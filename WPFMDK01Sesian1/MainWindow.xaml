@@ -29,11 +29,12 @@
                 </StackPanel>
 
 
-                <StackPanel Name="KeyV" Orientation="Horizontal" Margin="10" Height="20" Width="300" >
-
-                    <TextBlock Text="Код" Margin="0,0,26,0"  />
-                    <TextBox x:Name="Key" Width="200"  />
-                    <Image Name="Refac" Source="{Binding Source, Source={StaticResource resImage}}"  Height="20" Width="46" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                <StackPanel  Orientation="Horizontal" Margin="10" Height="20" Width="300"  >
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock  x:Name="KeyN" Text="Код" Margin="0,0,26,0" Visibility="Hidden" />
+                        <TextBox x:Name="Key" Width="200" Visibility="Hidden" />    
+                    </StackPanel>
+                        <Image x:Name="Refac"  Source="/Resours/Rem.jpg"  Height="20" Width="46" MouseLeftButtonDown="Image_MouseLeftButtonDown"  Visibility="Hidden" />
 
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center">
