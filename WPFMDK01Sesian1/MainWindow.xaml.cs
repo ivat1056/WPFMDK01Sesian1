@@ -38,8 +38,6 @@ namespace WPFMDK01Sesian1
         }
 
         
-                
-
         private void PasswordBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
            
