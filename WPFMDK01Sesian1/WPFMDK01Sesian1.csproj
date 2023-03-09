@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Base.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class\ClassBase.cs" />
     <Compile Include="Emploe.cs">
       <DependentUpon>Base.tt</DependentUpon>
     </Compile>

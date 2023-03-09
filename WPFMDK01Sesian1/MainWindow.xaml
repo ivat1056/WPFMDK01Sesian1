@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:WPFMDK01Sesian1"
         mc:Ignorable="d" Icon="/Resours/image.ico"
         Title="MainWindow" Height="450" Width="755">
+
+    <Window.Resources>
+        <Image  x:Key="resImage" Source="\Resours\Rem.jpg"/>
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -21,21 +25,25 @@
 
                 <StackPanel Orientation="Horizontal" Height="20" Margin="10" Width="300">
                     <TextBlock Text="Пароль" Margin="0,0,6,0"  />
-                    <PasswordBox x:Name="Password"  Width="250" />
+                    <TextBox Name="Password"  Width="250" KeyDown="PasswordBox_KeyDown" PreviewKeyDown="PasswordBox_PreviewKeyDown" />
                 </StackPanel>
 
 
-                <StackPanel Orientation="Horizontal" Margin="10" Height="20" Width="300">
+                <StackPanel Name="KeyV" Orientation="Horizontal" Margin="10" Height="20" Width="300" >
 
                     <TextBlock Text="Код" Margin="0,0,26,0"  />
                     <TextBox x:Name="Key" Width="200"  />
-                    <Image Source="Resours/Rem.jpg" Height="20" Width="30" />
+                    <Image Name="Refac" Source="{Binding Source, Source={StaticResource resImage}}"  Height="20" Width="46" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
 
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Name="tbTime" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="btn_Ex"  Content="Отмена" Width="100" Margin="10" Click="btn_Ex_Click"/>
-                    <Button x:Name="btn_In"  Content="Вход" Width="100" Margin="10" Click="btn_In_Click_1"/>
+                    <Button x:Name="btn_In"  Content="Вход" Width="100" Margin="10" Click="btn_In_Click"/>
                 </StackPanel>
+                
             </StackPanel>
         </StackPanel>
 
