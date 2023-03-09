@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMDK01Sesian1"
         mc:Ignorable="d" Icon="/Resours/image.ico"
-        Title="MainWindow" Height="450" Width="755">
+        Title="MainWindow" Height="450" Width="755" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Image  x:Key="resImage" Source="\Resours\Rem.jpg"/>
@@ -25,7 +25,7 @@
 
                 <StackPanel Orientation="Horizontal" Height="20" Margin="10" Width="300">
                     <TextBlock Text="Пароль" Margin="0,0,6,0"  />
-                    <TextBox Name="Password"  Width="250" KeyDown="PasswordBox_KeyDown" PreviewKeyDown="PasswordBox_PreviewKeyDown" />
+                    <TextBox Name="Password"  Width="250" KeyDown="PasswordBox_KeyDown"  />
                 </StackPanel>
 
 

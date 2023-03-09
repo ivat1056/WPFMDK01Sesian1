@@ -23,11 +23,20 @@ namespace WPFMDK01Sesian1
     public partial class MainWindow : Window
     {
         DispatcherTimer _timer;
+        DispatcherTimer _timer2;
         TimeSpan _time;
+        TimeSpan _time2;
         public MainWindow()
         {
             InitializeComponent();
             ClassBase.ep = new EP1();
+        }
+
+        public MainWindow(int a)
+        {
+            InitializeComponent();
+            
+
         }
 
         private void btn_Ex_Click(object sender, RoutedEventArgs e)
@@ -39,10 +48,7 @@ namespace WPFMDK01Sesian1
         }
 
         
-        private void PasswordBox_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-           
-        }
+      
        
         private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
         { 
@@ -74,7 +80,11 @@ namespace WPFMDK01Sesian1
             Key.Visibility = Visibility.Visible;
             KeyN.Visibility = Visibility.Visible;
 
-            _time = TimeSpan.FromSeconds(20);  // Таймер
+
+
+
+            _time = TimeSpan.FromSeconds(10);  // Таймер
+            _time2 = TimeSpan.FromSeconds(10);
 
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 2), DispatcherPriority.Normal, delegate
             {
@@ -96,25 +106,34 @@ namespace WPFMDK01Sesian1
                 
             }, Application.Current.Dispatcher);
 
-            Emploe em1 = ClassBase.ep.Emploe.FirstOrDefault(z => z.Number == Number.Text && z.Password == Password.Text);
-            if (em1 == null)
-            {
-                MessageBox.Show("Такого сотрудника нет");
-            }
-            else
-            {
-                if (Key.Text == finalString)
+
+
+
+
+            
+
+                Emploe em1 = ClassBase.ep.Emploe.FirstOrDefault(z => z.Number == Number.Text && z.Password == Password.Text);
+                if (em1 == null)
                 {
-                    Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
-                    MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
+                    MessageBox.Show("Такого сотрудника нет");
                 }
                 else
                 {
-                    MessageBox.Show("Код введен не верно");
+                    if (Key.Text == finalString)
+                    {
+                        Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
+                        MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Код введен не верно");
 
+                    }
                 }
-            }
+
+
             _timer.Start();
+            
         }
         public string GenRandom()
         {
