@@ -41,7 +41,6 @@ namespace WPFMDK01Sesian1
             Number.Text = "";
             Password.Text = "";
             Key.Text = "";
-
         }
 
        
@@ -76,27 +75,23 @@ namespace WPFMDK01Sesian1
                 {
                     if ((Number.Text != "") && (Password.Text != ""))
                     {
-                        if (Key.Text  == "")
+                        if (Key.Text == finalString)
                         {
-                            if (Key.Text == finalString)
-                            {
-                                Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
-                                MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
-                            }
-                            else
-                            {
-                                Auto();
-                            }
-                           
+                            Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
+                            MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
+                        }
+                        else if((Key.Text != finalString) && (Key.Text != ""))
+                        {
+                            MessageBox.Show("Обновите код");
+                            Key.IsEnabled = false;
+                            Refac.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            MessageBox.Show($"Ошибка");
-                        }
-                        
+                            Auto();
+                        }    
                     }
                 }
-
             }
         }
 
@@ -115,28 +110,12 @@ namespace WPFMDK01Sesian1
                 tbTime.Text = _time.ToString("c");
                 if (_time == TimeSpan.Zero)
                 {
-                    
-
-                    if (Key.Text == finalString)
-                    {
-                        Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
-                        MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Код введен не верно");
-                        Key.IsEnabled = false;
-
-                    }
-
+                   
+                    MessageBox.Show("Обновите код");
+                    Key.IsEnabled = false;
+                    Refac.Visibility = Visibility.Visible;
+                   
                     _timer.Stop();
-                    if (Key.Text != finalString)
-                    {
-                        MessageBox.Show("Обновите код");
-
-                        Refac.Visibility = Visibility.Visible;
-                    }
-
                 }
                 else
                 {
@@ -147,8 +126,7 @@ namespace WPFMDK01Sesian1
                 
             }, Application.Current.Dispatcher);
 
-            _timer.Start();
-            
+            _timer.Start();        
         }
         public string GenRandom()
         {
@@ -179,9 +157,8 @@ namespace WPFMDK01Sesian1
             }
 
 
-            var finalString = new String(stringChars);
-            var a = "1";
-            return a;
+            finalString = new String(stringChars);
+            return finalString;
         }
         
 
