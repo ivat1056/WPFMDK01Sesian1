@@ -147,9 +147,6 @@ namespace WPFMDK01Sesian1
                 
             }, Application.Current.Dispatcher);
 
-
-
-
             _timer.Start();
             
         }
