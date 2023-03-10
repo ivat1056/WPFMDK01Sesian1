@@ -23,21 +23,18 @@ namespace WPFMDK01Sesian1
     public partial class MainWindow : Window
     {
         DispatcherTimer _timer;
-        DispatcherTimer _timer2;
         TimeSpan _time;
-        TimeSpan _time2;
+        string finalString;
         public MainWindow()
         {
             InitializeComponent();
             ClassBase.ep = new EP1();
+            Password.IsEnabled = false;
+            Key.IsEnabled = false;
+            Number.IsEnabled = true;
+            Number.Focus();
         }
 
-        public MainWindow(int a)
-        {
-            InitializeComponent();
-            
-
-        }
 
         private void btn_Ex_Click(object sender, RoutedEventArgs e)
         {
@@ -47,54 +44,98 @@ namespace WPFMDK01Sesian1
 
         }
 
-        
-      
        
         private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
         { 
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                Emploe em = ClassBase.ep.Emploe.FirstOrDefault(z => z.Number == Number.Text && z.Password == Password.Text);
-                if (em == null)
+                Check();
+            }
+        }
+
+
+        public void Check()
+        {
+            
+            Emploe em1 = ClassBase.ep.Emploe.FirstOrDefault(z => z.Number == Number.Text );
+            if (em1 == null)
+            {
+                MessageBox.Show("Такого сотрудника нет");
+            }
+            else
+            {
+                Password.IsEnabled = true;
+                Password.Focus();
+                Emploe em2 = ClassBase.ep.Emploe.FirstOrDefault(z => z.Password == Password.Text);
+                if ((em2 == null) && (Password.Text != ""))
                 {
-                    MessageBox.Show("Такого сотрудника нет");
+                    MessageBox.Show("Неверный пароль");
                 }
+                
                 else
                 {
-                    if(Key.Text == "")
+                    if ((Number.Text != "") && (Password.Text != ""))
                     {
-                        Auto();
+                        if (Key.Text  == "")
+                        {
+                            if (Key.Text == finalString)
+                            {
+                                Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
+                                MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
+                            }
+                            else
+                            {
+                                Auto();
+                            }
+                           
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Ошибка");
+                        }
+                        
                     }
-                 
-
-                     
                 }
+
             }
         }
 
         public void Auto()
         {
-            string finalString = GenRandom();
+            finalString = GenRandom();
             MessageBox.Show($"Введите код {finalString}  в течение 10 секунд");
 
-            Key.Visibility = Visibility.Visible;
-            KeyN.Visibility = Visibility.Visible;
-
-
-
+            Key.IsEnabled = true;
+            Key.Focus();
 
             _time = TimeSpan.FromSeconds(10);  // Таймер
-            _time2 = TimeSpan.FromSeconds(10);
 
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 2), DispatcherPriority.Normal, delegate
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 tbTime.Text = _time.ToString("c");
                 if (_time == TimeSpan.Zero)
                 {
+                    
+
+                    if (Key.Text == finalString)
+                    {
+                        Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
+                        MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Код введен не верно");
+                        Key.IsEnabled = false;
+
+                    }
+
                     _timer.Stop();
-                    MessageBox.Show("Обновите код");
-                    Key.Visibility = Visibility.Hidden;
-                    Refac.Visibility = Visibility.Visible;
+                    if (Key.Text != finalString)
+                    {
+                        MessageBox.Show("Обновите код");
+
+                        Refac.Visibility = Visibility.Visible;
+                    }
 
                 }
                 else
@@ -107,29 +148,6 @@ namespace WPFMDK01Sesian1
             }, Application.Current.Dispatcher);
 
 
-
-
-
-            
-
-                Emploe em1 = ClassBase.ep.Emploe.FirstOrDefault(z => z.Number == Number.Text && z.Password == Password.Text);
-                if (em1 == null)
-                {
-                    MessageBox.Show("Такого сотрудника нет");
-                }
-                else
-                {
-                    if (Key.Text == finalString)
-                    {
-                        Emploe emploe = ClassBase.ep.Emploe.FirstOrDefault(x => x.Number == Number.Text);
-                        MessageBox.Show($"Ваша роль {emploe.Rols.Name}");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Код введен не верно");
-
-                    }
-                }
 
 
             _timer.Start();
@@ -165,18 +183,36 @@ namespace WPFMDK01Sesian1
 
 
             var finalString = new String(stringChars);
-            return finalString;
+            var a = "1";
+            return a;
         }
         
 
         private void btn_In_Click(object sender, RoutedEventArgs e)
         {
+            Check();
 
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           
+            Auto();
+        }
+
+        private void NumberKey(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Check();
+            }
+        }
+
+        private void KeyDown1(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Check();
+            }
         }
     }
 }
