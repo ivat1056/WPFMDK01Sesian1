@@ -158,6 +158,7 @@ namespace WPFMDK01Sesian1
 
 
             finalString = new String(stringChars);
+            Clipboard.SetText(finalString);
             return finalString;
         }
         
